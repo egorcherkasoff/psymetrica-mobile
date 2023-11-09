@@ -20,6 +20,7 @@ class Welcome extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Вход в приложение",
@@ -32,10 +33,80 @@ class Welcome extends StatelessWidget {
                         Theme.of(context).primaryColor,
                       ),
                     ),
-                    child: Text(
-                      "Войти по логину и паролю",
-                      style: Theme.of(context).textTheme.displayMedium,
+                    child: Row(
+                      children: [
+                        Text(
+                          "Войти по логину и паролю",
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
+                      ],
                     ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        Colors.blue.shade600,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Войти по VK ID",
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        Colors.white,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        //добавить иконку гугла
+                        Text(
+                          "Войти через Google",
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        Colors.black,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.apple,
+                          color: Colors.white,
+                          size: 30.0,
+                        ),
+                        Text(
+                          "Войти через Apple",
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "Нет аккаунта?",
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                      TextButton(
+                        child: const Text("Зарегистрируйтесь"),
+                        onPressed: ()  {},
+                      )
+                    ],
                   )
                 ],
               ),
