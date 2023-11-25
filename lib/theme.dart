@@ -9,7 +9,7 @@ final appTheme = ThemeData(
       fontWeight: FontWeight.w500,
     ),
     displayMedium: GoogleFonts.montserrat(
-      fontSize: 16.0,
+      fontSize: 18.0,
       fontWeight: FontWeight.w500,
       color: Colors.black,
     ),
