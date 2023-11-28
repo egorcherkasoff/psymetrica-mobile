@@ -3,17 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 final appTheme = ThemeData(
   primaryColor: const Color(0xff1095c0),
-  textTheme: TextTheme(
-    displayLarge: GoogleFonts.montserrat(
-      fontSize: 18.0,
-      fontWeight: FontWeight.w500,
-    ),
-    displayMedium: GoogleFonts.montserrat(
-      fontSize: 18.0,
-      fontWeight: FontWeight.w500,
-      color: Colors.black,
-    ),
-    displaySmall:
-        GoogleFonts.montserrat(fontSize: 15.0, fontWeight: FontWeight.w500),
+  textTheme: GoogleFonts.montserratTextTheme().copyWith(
+    displayMedium: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
+    displayLarge: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+    displaySmall: const TextStyle(fontSize: 16.0),
   ),
 );

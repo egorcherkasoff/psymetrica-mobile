@@ -33,7 +33,7 @@ class _TestsScreenState extends State<TestsScreen> {
           } else if (idx == 1) {
             Navigator.pushNamed(context, "/tests");
           } else {
-            Navigator.pushNamed(context, "/register");
+            Navigator.pushNamed(context, "/welcome");
           }
         },
         items: const [

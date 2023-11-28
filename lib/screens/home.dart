@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:psymetrica/components/notification_card.dart';
+import 'package:psymetrica/widgets/notification_card.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PsyMetrica'),
+        title: const Text('Главная'),
         backgroundColor: Theme.of(context).primaryColor,
         automaticallyImplyLeading: false,
       ),
@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
           } else if (idx == 1) {
             Navigator.pushNamed(context, "/tests");
           } else {
-            Navigator.pushNamed(context, "/register");
+            Navigator.pushNamed(context, "/welcome");
           }
         },
         items: const [

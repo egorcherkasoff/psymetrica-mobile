@@ -5,6 +5,7 @@ import 'package:psymetrica/screens/tests.dart';
 import 'package:psymetrica/screens/welcome.dart';
 import 'package:psymetrica/screens/test_start.dart';
 import 'package:psymetrica/screens/register_confirm.dart';
+import 'package:psymetrica/screens/test.dart';
 import 'package:psymetrica/theme.dart';
 
 void main() {
@@ -24,8 +25,9 @@ class Main extends StatelessWidget {
         '/welcome': (context) => (Welcome()),
         '/register': (context) => (Register()),
         '/register/confirm': (context) => (RegisterConfirm()),
-        '/tests/<id>/start': (context) => (TestStart()),
-        '/tests': (context) => (TestsScreen())
+        '/tests/start': (context) => (TestStart()),
+        '/tests': (context) => (TestsScreen()),
+        '/test': (context) => (TestScreen()),
       },
     );
   }

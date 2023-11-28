@@ -12,41 +12,61 @@ class TestStart extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding:
-              const EdgeInsets.symmetric(vertical: 150.0, horizontal: 20.0),
+          padding: const EdgeInsets.all(10.0),
           child: Card(
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Тест на апатию",
-                    style: Theme.of(context).textTheme.displayLarge,
-                  ),
-                  Text(
-                    "Здесь лидет описание теста... Не особо длинное, но для примера подойдет вполне себе.",
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        Theme.of(context).primaryColor,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Column(
+                  children: [
+                    ListTile(
+                      title: Text(
+                        "Название теста",
+                        style: Theme.of(context).textTheme.displayLarge,
+                        textAlign: TextAlign.center,
+                      ),
+                      subtitle: Text(
+                        "Здесь идет описание теста, оно может отсутсвовать, так и нести в себе какой-либо смысл...",
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                     ),
-                    child: Row(
-                      children: [
-                        Text(
+                    const SizedBox(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Тест состоит из N вопросов.",
+                          style: Theme.of(context).textTheme.displaySmall,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, "/test");
+                      },
+                      splashColor: Theme.of(context).primaryColor,
+                      child: Container(
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                        height: 48.0,
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            top: BorderSide(color: Colors.black12),
+                          ),
+                        ),
+                        child: Text(
                           "Начать",
                           style: Theme.of(context).textTheme.displayMedium,
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
