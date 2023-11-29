@@ -3,6 +3,7 @@ import 'package:psymetrica/widgets/test_progress.dart';
 import 'package:psymetrica/widgets/tests/radios.dart';
 import 'package:psymetrica/widgets/tests/scale.dart';
 import 'package:psymetrica/widgets/tests/checks.dart';
+import 'package:psymetrica/widgets/tests/images.dart';
 
 class TestScreen extends StatelessWidget {
   const TestScreen({super.key});
@@ -28,6 +29,7 @@ class TestScreen extends StatelessWidget {
                 TestScale(),
                 TestRadios(),
                 TestChecks(),
+                // TestImages(),
                 SizedBox(
                   height: 48,
                 )
@@ -69,7 +71,7 @@ class TestScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, "/");
+                    Navigator.pushNamed(context, "/test/finish");
                   },
                   splashColor: Theme.of(context).primaryColor,
                   child: Container(

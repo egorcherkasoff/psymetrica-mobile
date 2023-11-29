@@ -13,74 +13,56 @@ class Register extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding:
-              const EdgeInsets.symmetric(vertical: 150.0, horizontal: 20.0),
+          padding: const EdgeInsets.all(10.0),
           child: Card(
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Регистрация",
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    "Вход в приложение",
                     style: Theme.of(context).textTheme.displayLarge,
                   ),
-                  Form(
+                ),
+                Form(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
                     child: Column(
                       children: [
                         TextFormField(
-                          decoration: InputDecoration(
-                            hintText: "Введите ваш email",
-                            border: OutlineInputBorder(),
-                          ),
+                          autocorrect: false,
+                          decoration: const InputDecoration(
+                              labelText: "Введите ваш логин"),
                         ),
                         TextFormField(
-                          decoration: InputDecoration(
-                            hintText: "Введите пароль",
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            hintText: "Подтвердите пароль",
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                              Theme.of(context).primaryColor,
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Зарегистрироваться",
-                                style:
-                                    Theme.of(context).textTheme.displayMedium,
-                              ),
-                            ],
-                          ),
+                          autocorrect: false,
+                          decoration: const InputDecoration(
+                              labelText: "Введите ваш пароль"),
                         ),
                       ],
                     ),
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        "Уже зарегистрированы?",
-                        style: Theme.of(context).textTheme.displayMedium,
+                ),
+                InkWell(
+                  onTap: () {},
+                  splashColor: Theme.of(context).primaryColor,
+                  child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    height: 48.0,
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        top: BorderSide(color: Colors.black12),
                       ),
-                      TextButton(
-                        child: const Text("Войдите"),
-                        onPressed: () {},
-                      )
-                    ],
-                  )
-                ],
-              ),
+                    ),
+                    child: Text(
+                      "Продолжить",
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

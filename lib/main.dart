@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/home.dart';
 import 'package:psymetrica/screens/register.dart';
+import 'package:psymetrica/screens/test_finish.dart';
 import 'package:psymetrica/screens/tests.dart';
 import 'package:psymetrica/screens/welcome.dart';
 import 'package:psymetrica/screens/test_start.dart';
@@ -28,6 +29,7 @@ class Main extends StatelessWidget {
         '/tests/start': (context) => (TestStart()),
         '/tests': (context) => (TestsScreen()),
         '/test': (context) => (TestScreen()),
+        '/test/finish': (context) => (TestFinish()),
       },
     );
   }
