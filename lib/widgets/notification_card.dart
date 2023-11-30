@@ -18,6 +18,7 @@ class NotificationCardState extends State<NotificationCard> {
       child: Card(
         elevation: 3,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
               title: Text(

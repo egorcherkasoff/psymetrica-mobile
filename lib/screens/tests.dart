@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import "package:psymetrica/widgets/filter_button.dart";
+import "package:psymetrica/widgets/test_card.dart";
 
 class TestsScreen extends StatefulWidget {
   const TestsScreen({super.key});
@@ -15,15 +17,6 @@ class _TestsScreenState extends State<TestsScreen> {
         title: const Text('PsyMetrica'),
         backgroundColor: Theme.of(context).primaryColor,
         automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-          )
-        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 1,
@@ -51,22 +44,32 @@ class _TestsScreenState extends State<TestsScreen> {
           ),
         ],
       ),
-      body: Column(
+      body: Stack(
+        fit: StackFit.expand,
         children: [
-          TextButton(
-            onPressed: () {},
-            child: Row(
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
               children: [
-                Icon(
-                  Icons.format_list_bulleted_rounded,
-                  color: Theme.of(context).primaryColor,
+                const SizedBox(
+                  height: 70,
                 ),
-                Text(
-                  "Фильтр",
-                  style: Theme.of(context).textTheme.bodyMedium,
-                )
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return const TestCard();
+                  },
+                ),
               ],
             ),
+          ),
+          const Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: FilterButton(),
           ),
         ],
       ),
