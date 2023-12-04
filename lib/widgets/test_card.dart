@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:psymetrica/screens/home.dart';
+import 'package:psymetrica/screens/test.dart';
 
 class TestCard extends StatelessWidget {
   const TestCard({super.key});
@@ -8,6 +10,7 @@ class TestCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Card(
+        elevation: 3,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -22,7 +25,16 @@ class TestCard extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const TestScreen();
+                    },
+                  ),
+                );
+              },
               splashColor: Theme.of(context).primaryColor,
               child: Container(
                 width: double.infinity,

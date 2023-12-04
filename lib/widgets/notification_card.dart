@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:psymetrica/screens/test.dart';
 
 class NotificationCard extends StatefulWidget {
   const NotificationCard({
@@ -44,7 +45,14 @@ class NotificationCardState extends State<NotificationCard> {
             ),
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, "/tests/start");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const TestScreen();
+                    },
+                  ),
+                );
               },
               splashColor: Theme.of(context).primaryColor,
               child: Container(

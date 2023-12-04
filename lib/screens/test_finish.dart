@@ -9,6 +9,7 @@ class TestFinish extends StatelessWidget {
       appBar: AppBar(
         title: const Text("PsyMetrica"),
         backgroundColor: Theme.of(context).primaryColor,
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Padding(
@@ -33,7 +34,9 @@ class TestFinish extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, "/");
+                        Navigator.pop(
+                          context,
+                        );
                       },
                       splashColor: Theme.of(context).primaryColor,
                       child: Container(

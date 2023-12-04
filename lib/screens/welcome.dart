@@ -5,20 +5,14 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("PsyMetrica"),
-        backgroundColor: Theme.of(context).primaryColor,
-        automaticallyImplyLeading: false,
-      ),
-      body: Center(
+    return Center(
+      child: Card(
+        margin: const EdgeInsets.all(10.0),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [],
-            ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [],
           ),
         ),
       ),

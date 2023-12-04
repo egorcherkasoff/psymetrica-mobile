@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psymetrica/screens/test_finish.dart';
 import 'package:psymetrica/widgets/test_progress.dart';
 import 'package:psymetrica/widgets/tests/radios.dart';
 import 'package:psymetrica/widgets/tests/scale.dart';
@@ -49,7 +50,7 @@ class TestScreen extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, "/");
+                    Navigator.pop(context);
                   },
                   splashColor: Theme.of(context).primaryColor,
                   child: Container(
@@ -71,7 +72,14 @@ class TestScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, "/test/finish");
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const TestFinish();
+                        },
+                      ),
+                    );
                   },
                   splashColor: Theme.of(context).primaryColor,
                   child: Container(
