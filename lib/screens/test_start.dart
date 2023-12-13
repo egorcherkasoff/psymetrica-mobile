@@ -1,73 +1,92 @@
 import 'package:flutter/material.dart';
+import 'package:psymetrica/models/test.dart';
+import 'package:psymetrica/screens/home.dart';
+import 'package:psymetrica/screens/tabs.dart';
+import 'package:psymetrica/screens/test.dart';
 
 class TestStart extends StatelessWidget {
-  const TestStart({Key? key}) : super(key: key);
+  const TestStart({Key? key, required this.test}) : super(key: key);
+
+  final Test test;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("PsyMetrica"),
-        backgroundColor: Theme.of(context).primaryColor,
-      ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Column(
-                  children: [
-                    ListTile(
-                      title: Text(
-                        "Название теста",
-                        style: Theme.of(context).textTheme.displayLarge,
-                        textAlign: TextAlign.center,
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 7),
+          padding: const EdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.black12, width: 1),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(
+                height: 18,
+              ),
+              Text(
+                test.title,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(fontSize: 18),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                test.description,
+                textAlign: TextAlign.center,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(fontSize: 16, height: 1.2),
+              ),
+              const SizedBox(
+                height: 18,
+              ),
+              Text(
+                "Тест состоит из ${test.questionsCount} вопросов",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(fontSize: 16, height: 1.2),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const TestScreen();
+                        },
                       ),
-                      subtitle: Text(
-                        "Здесь идет описание теста, оно может отсутсвовать, так и нести в себе какой-либо смысл...",
-                        style: Theme.of(context).textTheme.displayMedium,
-                      ),
-                    ),
-                    const SizedBox(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Тест состоит из N вопросов.",
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 3,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, "/test");
-                      },
-                      splashColor: Theme.of(context).primaryColor,
-                      child: Container(
-                        width: double.infinity,
-                        alignment: Alignment.center,
-                        height: 48.0,
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            top: BorderSide(color: Colors.black12),
-                          ),
-                        ),
-                        child: Text(
-                          "Начать",
-                          style: Theme.of(context).textTheme.displayMedium,
-                        ),
-                      ),
-                    ),
-                  ],
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).primaryColor,
+                  ),
+                  child: Text(
+                    "Начать",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(fontSize: 16, color: Colors.white),
+                  ),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 18,
+              ),
+            ],
           ),
         ),
       ),

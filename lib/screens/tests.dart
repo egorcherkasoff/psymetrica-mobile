@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:psymetrica/widgets/filter_button.dart";
 import "package:psymetrica/widgets/test_card.dart";
+import 'package:psymetrica/temp_data.dart';
 
 class TestsScreen extends StatefulWidget {
   const TestsScreen({super.key});
@@ -25,9 +26,9 @@ class _TestsScreenState extends State<TestsScreen> {
               ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: 2,
+                itemCount: tempTests.length,
                 itemBuilder: (context, index) {
-                  return const TestCard();
+                  return TestCard(test: tempTests[index]);
                 },
               ),
             ],
