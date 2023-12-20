@@ -18,49 +18,48 @@ class _TestRadiosState extends State<TestRadios> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Card(
-        elevation: 3,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              title: Text(
-                "Когда я один я чувствую себя уверенно",
-                style: Theme.of(context).textTheme.displayMedium,
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 7),
+      elevation: 0,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black12, width: 1),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: ListTile(
+          title: Text(
+            "Когда я один я чувствую себя уверенно",
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
+          subtitle: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              RadioListTile(
+                title: const Text("Превосходно"),
+                value: 1,
+                groupValue: _currentOption,
+                onChanged: (value) {
+                  _changeOption(value!);
+                },
               ),
-              subtitle: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  RadioListTile(
-                    title: Text("Превосходно"),
-                    value: 1,
-                    groupValue: _currentOption,
-                    onChanged: (value) {
-                      _changeOption(value!);
-                    },
-                  ),
-                  RadioListTile(
-                    title: Text("Нормально"),
-                    value: 2,
-                    groupValue: _currentOption,
-                    onChanged: (value) {
-                      _changeOption(value!);
-                    },
-                  ),
-                  RadioListTile(
-                    title: Text("Ужасно :("),
-                    value: 3,
-                    groupValue: _currentOption,
-                    onChanged: (value) {
-                      _changeOption(value!);
-                    },
-                  ),
-                ],
+              RadioListTile(
+                title: const Text("Нормально"),
+                value: 2,
+                groupValue: _currentOption,
+                onChanged: (value) {
+                  _changeOption(value!);
+                },
               ),
-            ),
-          ],
+              RadioListTile(
+                title: const Text("Ужасно :("),
+                value: 3,
+                groupValue: _currentOption,
+                onChanged: (value) {
+                  _changeOption(value!);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

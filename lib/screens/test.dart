@@ -4,7 +4,6 @@ import 'package:psymetrica/widgets/test_progress.dart';
 import 'package:psymetrica/widgets/tests/radios.dart';
 import 'package:psymetrica/widgets/tests/scale.dart';
 import 'package:psymetrica/widgets/tests/checks.dart';
-import 'package:psymetrica/widgets/tests/images.dart';
 
 class TestScreen extends StatelessWidget {
   const TestScreen({super.key});
@@ -20,19 +19,86 @@ class TestScreen extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          const SingleChildScrollView(
+          SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 70,
                 ),
-                TestScale(),
-                TestRadios(),
-                TestChecks(),
+                const TestScale(),
+                const TestRadios(),
+                const TestChecks(),
                 // TestImages(),
-                SizedBox(
-                  height: 48,
+                Card(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 7),
+                  elevation: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black12, width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const TestFinish();
+                                  },
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Theme.of(context).primaryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                            ),
+                            child: Text(
+                              "Далее",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(fontSize: 16, color: Colors.white),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          child: OutlinedButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            style: OutlinedButton.styleFrom(
+                              side: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 1),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                            ),
+                            child: Text(
+                              "Назад",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                      fontSize: 16,
+                                      color: Theme.of(context).primaryColor),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 )
               ],
             ),
@@ -43,65 +109,6 @@ class TestScreen extends StatelessWidget {
             top: 0,
             child: TestProgress(),
           ),
-          Positioned(
-            bottom: 0,
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  splashColor: Theme.of(context).primaryColor,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    alignment: Alignment.center,
-                    height: 48.0,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      border: Border(
-                        top: BorderSide(color: Colors.black12),
-                        right: BorderSide(color: Colors.black12),
-                      ),
-                    ),
-                    child: Text(
-                      "Назад",
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const TestFinish();
-                        },
-                      ),
-                    );
-                  },
-                  splashColor: Theme.of(context).primaryColor,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    alignment: Alignment.center,
-                    height: 48.0,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      border: Border(
-                        top: BorderSide(color: Colors.black12),
-                        left: BorderSide(color: Colors.black12),
-                      ),
-                    ),
-                    child: Text(
-                      "Далее",
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          )
         ],
       ),
     );

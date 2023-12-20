@@ -42,7 +42,7 @@ class Register extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return RegisterConfirm();
+                    return const RegisterConfirm();
                   }));
                 },
                 splashColor: Theme.of(context).primaryColor,

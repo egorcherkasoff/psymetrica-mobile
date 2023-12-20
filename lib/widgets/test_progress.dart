@@ -6,10 +6,14 @@ class TestProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Card(
-        elevation: 3,
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 7),
+      elevation: 0,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black12, width: 1),
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: ListTile(
           title: LinearPercentIndicator(
             leading: Text(

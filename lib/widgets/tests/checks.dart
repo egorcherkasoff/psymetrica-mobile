@@ -19,58 +19,57 @@ class _TestChecksState extends State<TestChecks> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Card(
-        elevation: 3,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              title: Text(
-                "Выберите Ваши любимые цвета",
-                style: Theme.of(context).textTheme.displayMedium,
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 7),
+      elevation: 0,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black12, width: 1),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: ListTile(
+          title: Text(
+            "Выберите Ваши любимые цвета",
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
+          subtitle: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CheckboxListTile(
+                value: _testChecks.contains("option1") ? true : false,
+                onChanged: (value) {
+                  setState(
+                    () {
+                      _onCheck("option1");
+                    },
+                  );
+                },
+                title: const Text("Красный"),
               ),
-              subtitle: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CheckboxListTile(
-                    value: _testChecks.contains("option1") ? true : false,
-                    onChanged: (value) {
-                      setState(
-                        () {
-                          _onCheck("option1");
-                        },
-                      );
+              CheckboxListTile(
+                value: _testChecks.contains("option2") ? true : false,
+                onChanged: (value) {
+                  setState(
+                    () {
+                      _onCheck("option2");
                     },
-                    title: const Text("Красный"),
-                  ),
-                  CheckboxListTile(
-                    value: _testChecks.contains("option2") ? true : false,
-                    onChanged: (value) {
-                      setState(
-                        () {
-                          _onCheck("option2");
-                        },
-                      );
-                    },
-                    title: const Text("Синий"),
-                  ),
-                  CheckboxListTile(
-                    value: _testChecks.contains("option3") ? true : false,
-                    onChanged: (value) {
-                      setState(
-                        () {
-                          _onCheck("option3");
-                        },
-                      );
-                    },
-                    title: const Text("Зелёный"),
-                  ),
-                ],
+                  );
+                },
+                title: const Text("Синий"),
               ),
-            ),
-          ],
+              CheckboxListTile(
+                value: _testChecks.contains("option3") ? true : false,
+                onChanged: (value) {
+                  setState(
+                    () {
+                      _onCheck("option3");
+                    },
+                  );
+                },
+                title: const Text("Зелёный"),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:psymetrica/models/test.dart';
-import 'package:psymetrica/screens/home.dart';
-import 'package:psymetrica/screens/test.dart';
 import 'package:psymetrica/screens/test_start.dart';
 
 class TestCard extends StatelessWidget {

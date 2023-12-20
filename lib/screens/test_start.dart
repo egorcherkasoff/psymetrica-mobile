@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:psymetrica/models/test.dart';
-import 'package:psymetrica/screens/home.dart';
-import 'package:psymetrica/screens/tabs.dart';
 import 'package:psymetrica/screens/test.dart';
 
 class TestStart extends StatelessWidget {
@@ -73,6 +71,9 @@ class TestStart extends StatelessWidget {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).primaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                   ),
                   child: Text(
                     "Начать",

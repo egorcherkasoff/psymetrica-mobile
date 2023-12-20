@@ -6,58 +6,67 @@ class TestFinish extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("PsyMetrica"),
-        backgroundColor: Theme.of(context).primaryColor,
-        automaticallyImplyLeading: false,
-      ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Column(
-                  children: [
-                    ListTile(
-                      title: Text(
-                        "Тест завершен",
-                        style: Theme.of(context).textTheme.displayLarge,
-                        textAlign: TextAlign.center,
-                      ),
-                      subtitle: Text(
-                        "Ваши ответы записаны",
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.displayMedium,
-                      ),
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 7),
+          padding: const EdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.black12, width: 1),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(
+                height: 18,
+              ),
+              Text(
+                "Тест завершён",
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(fontSize: 18),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Ваши ответы записаны",
+                textAlign: TextAlign.center,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(fontSize: 16, height: 1.2),
+              ),
+              const SizedBox(
+                height: 18,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).primaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(
-                          context,
-                        );
-                      },
-                      splashColor: Theme.of(context).primaryColor,
-                      child: Container(
-                        width: double.infinity,
-                        alignment: Alignment.center,
-                        height: 48.0,
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            top: BorderSide(color: Colors.black12),
-                          ),
-                        ),
-                        child: Text(
-                          "На главный экран",
-                          style: Theme.of(context).textTheme.displayMedium,
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
+                  child: Text(
+                    "На главный экран",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(fontSize: 16, color: Colors.white),
+                  ),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 18,
+              ),
+            ],
           ),
         ),
       ),
