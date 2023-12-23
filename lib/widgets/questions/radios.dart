@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TestRadios extends StatefulWidget {
-  const TestRadios({super.key});
+class QuestionRadios extends StatefulWidget {
+  const QuestionRadios({super.key});
 
   @override
-  State<TestRadios> createState() => _TestRadiosState();
+  State<QuestionRadios> createState() => _QuestionRadiosState();
 }
 
-class _TestRadiosState extends State<TestRadios> {
+class _QuestionRadiosState extends State<QuestionRadios> {
   int _currentOption = 0;
 
   void _changeOption(int option) {
@@ -29,13 +29,20 @@ class _TestRadiosState extends State<TestRadios> {
         child: ListTile(
           title: Text(
             "Когда я один я чувствую себя уверенно",
-            style: Theme.of(context).textTheme.displayMedium,
+            style:
+                Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16),
           ),
           subtitle: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               RadioListTile(
-                title: const Text("Превосходно"),
+                title: Text(
+                  "Превосходно",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontSize: 14),
+                ),
                 value: 1,
                 groupValue: _currentOption,
                 onChanged: (value) {
@@ -43,7 +50,13 @@ class _TestRadiosState extends State<TestRadios> {
                 },
               ),
               RadioListTile(
-                title: const Text("Нормально"),
+                title: Text(
+                  "Нормально",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontSize: 14),
+                ),
                 value: 2,
                 groupValue: _currentOption,
                 onChanged: (value) {
@@ -51,7 +64,13 @@ class _TestRadiosState extends State<TestRadios> {
                 },
               ),
               RadioListTile(
-                title: const Text("Ужасно :("),
+                title: Text(
+                  "Ужасно :(",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontSize: 14),
+                ),
                 value: 3,
                 groupValue: _currentOption,
                 onChanged: (value) {

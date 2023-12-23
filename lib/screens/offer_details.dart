@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:psymetrica/screens/login.dart';
-import 'package:psymetrica/screens/register.dart';
+import 'package:psymetrica/screens/enter_details.dart';
+import 'package:psymetrica/screens/tabs.dart';
 
-class Welcome extends StatelessWidget {
-  const Welcome({Key? key}) : super(key: key);
+class OfferDetailsScreen extends StatefulWidget {
+  const OfferDetailsScreen({super.key});
 
+  @override
+  State<OfferDetailsScreen> createState() => _OfferDetailsScreenState();
+}
+
+class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,14 +21,33 @@ class Welcome extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            Text(
-              "Psymetrica",
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 2,
-                    fontSize: 36.0,
-                    color: Colors.black87,
-                  ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Заполните свой профиль",
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2,
+                        fontSize: 18.0,
+                        color: Colors.black87,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Оформите свой профиль. Пожалуйста, добавьте аватар и укажите ваше полное имя.",
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2,
+                        fontSize: 14.0,
+                        color: Colors.black87,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -48,7 +72,7 @@ class Welcome extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return const LoginScreen();
+                              return const EnterDetailsScreen();
                             },
                           ),
                         );
@@ -60,7 +84,7 @@ class Welcome extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        "Войти",
+                        "Заполнить",
                         style: Theme.of(context)
                             .textTheme
                             .bodyMedium!
@@ -72,11 +96,11 @@ class Welcome extends StatelessWidget {
                     width: double.infinity,
                     child: OutlinedButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return const Register();
+                              return const TabsScreen();
                             },
                           ),
                         );
@@ -89,7 +113,7 @@ class Welcome extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        "Зарегистрироваться",
+                        "Позже",
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontSize: 16,
                             color: Theme.of(context).primaryColor),

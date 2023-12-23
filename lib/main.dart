@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:psymetrica/screens/tabs.dart';
+import 'package:psymetrica/screens/welcome.dart';
 import 'package:psymetrica/theme.dart';
 
 void main() {
@@ -14,18 +14,7 @@ class Main extends StatelessWidget {
     return MaterialApp(
       theme: appTheme,
       debugShowCheckedModeBanner: false,
-      home: const TabsScreen(),
-      // initialRoute: "/",
-      // routes: {
-      //   '/': (context) => (Home()),
-      //   '/welcome': (context) => (Welcome()),
-      //   '/register': (context) => (Register()),
-      //   '/register/confirm': (context) => (RegisterConfirm()),
-      //   '/tests/start': (context) => (TestStart()),
-      //   '/tests': (context) => (TestsScreen()),
-      //   '/test': (context) => (TestScreen()),
-      //   '/test/finish': (context) => (TestFinish()),
-      // },
+      home: const Welcome(),
     );
   }
 }

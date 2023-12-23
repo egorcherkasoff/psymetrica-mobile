@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:psymetrica/screens/offer_details.dart';
 
-class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+class EnterDetailsScreen extends StatelessWidget {
+  const EnterDetailsScreen({super.key});
 
-  @override
-  State<Register> createState() => _RegisterState();
-}
+  void _pickImage() {
+    print('picking image...');
+  }
 
-class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +23,7 @@ class _RegisterState extends State<Register> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                "Регистрация",
+                "Заполните данные о себе",
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(
@@ -35,6 +33,18 @@ class _RegisterState extends State<Register> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    Container(
+                      margin: const EdgeInsets.all(8),
+                      width: 128,
+                      height: 128,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black12, width: 1),
+                          borderRadius: BorderRadius.circular(15)),
+                      child: InkWell(
+                        splashColor: Theme.of(context).primaryColor,
+                        onTap: _pickImage,
+                      ),
+                    ),
                     TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
@@ -81,17 +91,7 @@ class _RegisterState extends State<Register> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return const OfferDetailsScreen();
-                              },
-                            ),
-                            (route) => false,
-                          );
-                        },
+                        onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Theme.of(context).primaryColor,
                           shape: RoundedRectangleBorder(
@@ -99,7 +99,7 @@ class _RegisterState extends State<Register> {
                           ),
                         ),
                         child: Text(
-                          "Зарегистрироваться",
+                          "Войти",
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium!

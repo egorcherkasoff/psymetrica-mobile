@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class TestScale extends StatefulWidget {
-  const TestScale({Key? key}) : super(key: key);
+class QuestionScale extends StatefulWidget {
+  const QuestionScale({Key? key}) : super(key: key);
 
   @override
-  Test_ScaleState createState() => Test_ScaleState();
+  QuestionScaleState createState() => QuestionScaleState();
 }
 
-class Test_ScaleState extends State<TestScale> {
-  double _range = 1;
+class QuestionScaleState extends State<QuestionScale> {
+  double _range = 0;
 
   void _changeSliderValue(double value) {
     setState(() {
@@ -29,14 +29,15 @@ class Test_ScaleState extends State<TestScale> {
         child: ListTile(
           title: Text(
             "Насколько хорошо вы себя чувствуете?",
-            style: Theme.of(context).textTheme.displayMedium,
+            style:
+                Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16),
           ),
           subtitle: Slider(
-            min: 1,
+            min: 0,
             max: 10,
             value: _range,
             label: _range.toString().split('.')[0],
-            divisions: 9,
+            divisions: 10,
             thumbColor: Theme.of(context).primaryColor,
             onChanged: (value) {
               _changeSliderValue(value);

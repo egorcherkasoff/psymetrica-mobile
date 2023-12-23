@@ -16,16 +16,24 @@ class TestProgress extends StatelessWidget {
         ),
         child: ListTile(
           title: LinearPercentIndicator(
+            animation: true,
+            animationDuration: 800,
             leading: Text(
               "Ваш прогресс: ",
-              style: Theme.of(context).textTheme.displayMedium,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .copyWith(fontSize: 14),
             ),
             padding: const EdgeInsets.only(left: 8.0, right: 8.0),
             lineHeight: 10.0,
             backgroundColor: Colors.black26,
             trailing: Text(
               "10/12",
-              style: Theme.of(context).textTheme.displaySmall,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .copyWith(fontSize: 14),
             ),
             percent: 0.8,
             barRadius: const Radius.circular(3),

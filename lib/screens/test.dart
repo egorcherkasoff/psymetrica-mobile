@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/test_finish.dart';
+import 'package:psymetrica/widgets/questions/textarea.dart';
 import 'package:psymetrica/widgets/test_progress.dart';
-import 'package:psymetrica/widgets/tests/radios.dart';
-import 'package:psymetrica/widgets/tests/scale.dart';
-import 'package:psymetrica/widgets/tests/checks.dart';
+import 'package:psymetrica/widgets/questions/radios.dart';
+import 'package:psymetrica/widgets/questions/scale.dart';
+import 'package:psymetrica/widgets/questions/checks.dart';
 
 class TestScreen extends StatelessWidget {
   const TestScreen({super.key});
@@ -26,9 +27,11 @@ class TestScreen extends StatelessWidget {
                 const SizedBox(
                   height: 70,
                 ),
-                const TestScale(),
-                const TestRadios(),
-                const TestChecks(),
+                const QuestionScale(),
+                const QuestionRadios(),
+                const QuestionChecks(),
+                const QuestionTextArea(),
+                const QuestionTextArea(imgUrl: "cfjgfjg"),
                 // TestImages(),
                 Card(
                   margin:

@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 
-class TestChecks extends StatefulWidget {
-  const TestChecks({super.key});
+class QuestionChecks extends StatefulWidget {
+  const QuestionChecks({super.key});
 
   @override
-  State<TestChecks> createState() => _TestChecksState();
+  State<QuestionChecks> createState() => _QuestionChecksState();
 }
 
-class _TestChecksState extends State<TestChecks> {
-  final List<String> _testChecks = [];
+class _QuestionChecksState extends State<QuestionChecks> {
+  final List<String> _questionChecks = [];
 
   void _onCheck(String option) {
-    _testChecks.contains(option)
-        ? _testChecks.remove(option)
-        : _testChecks.add(option);
-    print(_testChecks);
+    _questionChecks.contains(option)
+        ? _questionChecks.remove(option)
+        : _questionChecks.add(option);
   }
 
   @override
@@ -30,13 +29,14 @@ class _TestChecksState extends State<TestChecks> {
         child: ListTile(
           title: Text(
             "Выберите Ваши любимые цвета",
-            style: Theme.of(context).textTheme.displayMedium,
+            style:
+                Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16),
           ),
           subtitle: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               CheckboxListTile(
-                value: _testChecks.contains("option1") ? true : false,
+                value: _questionChecks.contains("option1") ? true : false,
                 onChanged: (value) {
                   setState(
                     () {
@@ -44,10 +44,16 @@ class _TestChecksState extends State<TestChecks> {
                     },
                   );
                 },
-                title: const Text("Красный"),
+                title: Text(
+                  "Красный",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontSize: 14),
+                ),
               ),
               CheckboxListTile(
-                value: _testChecks.contains("option2") ? true : false,
+                value: _questionChecks.contains("option2") ? true : false,
                 onChanged: (value) {
                   setState(
                     () {
@@ -55,10 +61,16 @@ class _TestChecksState extends State<TestChecks> {
                     },
                   );
                 },
-                title: const Text("Синий"),
+                title: Text(
+                  "Синий",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontSize: 14),
+                ),
               ),
               CheckboxListTile(
-                value: _testChecks.contains("option3") ? true : false,
+                value: _questionChecks.contains("option3") ? true : false,
                 onChanged: (value) {
                   setState(
                     () {
@@ -66,7 +78,13 @@ class _TestChecksState extends State<TestChecks> {
                     },
                   );
                 },
-                title: const Text("Зелёный"),
+                title: Text(
+                  "Зелёный",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontSize: 14),
+                ),
               ),
             ],
           ),

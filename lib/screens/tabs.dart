@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/home.dart';
-import 'package:psymetrica/screens/register.dart';
+import 'package:psymetrica/screens/profile.dart';
 import 'package:psymetrica/screens/tests.dart';
-import 'package:psymetrica/screens/welcome.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
@@ -29,7 +28,7 @@ class _TabsScreenState extends State<TabsScreen> {
     } else if (_currentIndex == 1) {
       activeTab = const TestsScreen();
     } else {
-      activeTab = const Welcome();
+      activeTab = const ProfileScreen();
     }
 
     return Scaffold(
