@@ -27,13 +27,22 @@ const List<nfc.Notification> tempNotifications = [
 
 const List<Test> tempTests = [
   Test(
-      title: "Кто ты из слова пацана",
-      description:
-          "Этот тест позволит тебе наконец понять - кто ты из персонажей \"Слова пацана\"",
-      questionsCount: 10),
+    title: "Кто ты из слова пацана",
+    description:
+        "Этот тест позволит тебе наконец понять - кто ты из персонажей \"Слова пацана\"",
+    questionsCount: 10,
+    author: "user_id",
+    slug: "kto-tu-iz-slova-pacana",
+    createdAt: "2024-01-01",
+    id: "test_id",
+  ),
   Test(
       title: "Тест на дисперсию",
       description:
           "Этот тест предназначен для тех, кто считает что у него депресия в 0 лет",
-      questionsCount: 38),
+      questionsCount: 38,
+      author: "user_id1",
+      slug: "test-dispersia",
+      createdAt: "2024-01-01",
+      id: "test_id1"),
 ];

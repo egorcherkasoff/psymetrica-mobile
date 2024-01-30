@@ -44,7 +44,8 @@ class ProfileScreen extends StatelessWidget {
                             width: 40,
                             height: 40,
                             child: CircularProgressIndicator()),
-                        errorWidget: (context, url, error) => const Icon(Icons.error),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                   ),
@@ -102,21 +103,39 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   const TestCard(
                     test: Test(
-                        title: "Кто ты из слово пацана",
-                        description: "Описание",
-                        questionsCount: 4),
+                      title: "Кто ты из слова пацана",
+                      description:
+                          "Этот тест позволит тебе наконец понять - кто ты из персонажей \"Слова пацана\"",
+                      questionsCount: 10,
+                      author: "user_id",
+                      slug: "kto-tu-iz-slova-pacana",
+                      createdAt: "2024-01-01",
+                      id: "test_id",
+                    ),
                   ),
                   const TestCard(
                     test: Test(
-                        title: "Тест на дисперсию",
-                        description: "Описание",
-                        questionsCount: 4),
+                      title: "Кто ты из слова пацана",
+                      description:
+                          "Этот тест позволит тебе наконец понять - кто ты из персонажей \"Слова пацана\"",
+                      questionsCount: 10,
+                      author: "user_id",
+                      slug: "kto-tu-iz-slova-pacana",
+                      createdAt: "2024-01-01",
+                      id: "test_id",
+                    ),
                   ),
                   const TestCard(
                     test: Test(
-                        title: "Какой ты моб из майнкрафта",
-                        description: "Описание",
-                        questionsCount: 4),
+                      title: "Кто ты из слова пацана",
+                      description:
+                          "Этот тест позволит тебе наконец понять - кто ты из персонажей \"Слова пацана\"",
+                      questionsCount: 10,
+                      author: "user_id",
+                      slug: "kto-tu-iz-slova-pacana",
+                      createdAt: "2024-01-01",
+                      id: "test_id",
+                    ),
                   ),
                 ],
               ),
