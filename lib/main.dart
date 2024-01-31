@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/welcome.dart';
-import 'package:psymetrica/theme.dart';
+import 'package:psymetrica/theme/theme.dart';
 
 void main() {
   runApp(const Main());
