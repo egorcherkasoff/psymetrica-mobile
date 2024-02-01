@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:psymetrica/models/test.dart';
+import 'package:psymetrica/models/user.dart';
 import 'package:psymetrica/widgets/test_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -107,7 +108,7 @@ class ProfileScreen extends StatelessWidget {
                       description:
                           "Этот тест позволит тебе наконец понять - кто ты из персонажей \"Слова пацана\"",
                       questionsCount: 10,
-                      author: "user_id",
+                      author: User(id: "asdada", fullName: "Надежда Авангард"),
                       slug: "kto-tu-iz-slova-pacana",
                       createdAt: "2024-01-01",
                       id: "test_id",
@@ -119,7 +120,7 @@ class ProfileScreen extends StatelessWidget {
                       description:
                           "Этот тест позволит тебе наконец понять - кто ты из персонажей \"Слова пацана\"",
                       questionsCount: 10,
-                      author: "user_id",
+                      author: User(id: "asdada", fullName: "Надежда Авангард"),
                       slug: "kto-tu-iz-slova-pacana",
                       createdAt: "2024-01-01",
                       id: "test_id",
@@ -131,7 +132,7 @@ class ProfileScreen extends StatelessWidget {
                       description:
                           "Этот тест позволит тебе наконец понять - кто ты из персонажей \"Слова пацана\"",
                       questionsCount: 10,
-                      author: "user_id",
+                      author: User(id: "asdada", fullName: "Надежда Авангард"),
                       slug: "kto-tu-iz-slova-pacana",
                       createdAt: "2024-01-01",
                       id: "test_id",

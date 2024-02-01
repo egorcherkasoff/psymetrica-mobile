@@ -1,21 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/tabs.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  void _login() {
+    if (_formKey.currentState!.validate()) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return const TabsScreen();
+          },
+        ),
+        (route) => false,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 7),
           padding: const EdgeInsets.all(8.0),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.black12, width: 1),
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -36,10 +55,23 @@ class LoginScreen extends StatelessWidget {
 
   Form _loginForm(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           TextFormField(
+            controller: _emailController,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Обязательное поле";
+              }
+              if (!RegExp(
+                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                  .hasMatch(value)) {
+                return "Введите корректный email";
+              }
+              return null;
+            },
             keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(
               hintText: "Введите ваш email",
@@ -50,9 +82,18 @@ class LoginScreen extends StatelessWidget {
             height: 15,
           ),
           TextFormField(
+            controller: _passwordController,
+            validator: (value) {
+              if (value == null || value.isEmpty || value.length < 6) {
+                return "Обязательное поле";
+              }
+              return null;
+            },
             obscureText: true,
             keyboardType: TextInputType.text,
-            decoration: const InputDecoration(hintText: "Введите ваш пароль"),
+            decoration: const InputDecoration(
+              hintText: "Введите ваш пароль",
+            ),
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   fontSize: 16,
                 ),
@@ -63,17 +104,7 @@ class LoginScreen extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const TabsScreen();
-                    },
-                  ),
-                  (route) => false,
-                );
-              },
+              onPressed: _login,
               style: Theme.of(context).elevatedButtonTheme.style,
               child: const Text(
                 "Войти",

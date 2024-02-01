@@ -9,110 +9,127 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _rePasswordController = TextEditingController();
+
+  void _register() {
+    if (_formKey.currentState!.validate()) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return const OfferDetailsScreen();
+          },
+        ),
+        (route) => false,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 7),
           padding: const EdgeInsets.all(8.0),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.black12, width: 1),
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 "Регистрация",
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               const SizedBox(
                 height: 8,
               ),
-              Form(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        label: Text("Введите ваш email",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(color: Colors.black54, fontSize: 16)),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 0, horizontal: 10),
-                      ),
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            fontSize: 16,
-                          ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    TextFormField(
-                      obscureText: true,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        label: Text("Введите пароль",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(color: Colors.black54, fontSize: 16)),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 0, horizontal: 10),
-                      ),
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            fontSize: 16,
-                          ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return const OfferDetailsScreen();
-                              },
-                            ),
-                            (route) => false,
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(context).primaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                        ),
-                        child: Text(
-                          "Зарегистрироваться",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(fontSize: 16, color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              _registerForm(context),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Form _registerForm(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextFormField(
+            controller: _emailController,
+            keyboardType: TextInputType.emailAddress,
+            decoration: const InputDecoration(hintText: "Введите ваш email"),
+            style: Theme.of(context).textTheme.bodyMedium,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Обязательное поле";
+              }
+              if (!RegExp(
+                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                  .hasMatch(value)) {
+                return "Введите корректный email";
+              }
+              return null;
+            },
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          TextFormField(
+            controller: _passwordController,
+            obscureText: true,
+            keyboardType: TextInputType.text,
+            decoration: const InputDecoration(
+              hintText: "Введите ваш пароль",
+            ),
+            style: Theme.of(context).textTheme.bodyMedium,
+            validator: (value) {
+              if (value == null || value.isEmpty || value.length < 6) {
+                return "Обязательное поле";
+              }
+              return null;
+            },
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          TextFormField(
+            controller: _rePasswordController,
+            obscureText: true,
+            keyboardType: TextInputType.text,
+            decoration: const InputDecoration(
+              hintText: "Подтвердите пароль",
+            ),
+            style: Theme.of(context).textTheme.bodyMedium,
+            validator: (value) {
+              if (value == null || value.isEmpty || value.length < 6) {
+                return "Обязательное поле";
+              }
+              if (value != _passwordController.text) {
+                return "Пароли не совпадают";
+              }
+              return null;
+            },
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: _register,
+              style: Theme.of(context).elevatedButtonTheme.style,
+              child: const Text(
+                "Зарегистрироваться",
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

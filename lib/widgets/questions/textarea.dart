@@ -22,7 +22,7 @@ class _QuestionTextAreaState extends State<QuestionTextArea> {
         ),
         child: ListTile(
           trailing:
-              widget.imgUrl == null ? null : Icon(Icons.baby_changing_station),
+              widget.imgUrl == null ? null : const Icon(Icons.baby_changing_station),
           title: Text(
             "Развернуто ответьте на вопрос: Что значит свэг?",
             style:

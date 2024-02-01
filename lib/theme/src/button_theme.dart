@@ -23,4 +23,11 @@ class ButtonThemes {
       textStyle: TextThemes.textTheme.bodyMedium!,
     ),
   );
+
+  static final iconButtonTheme = IconButtonThemeData(
+    style: IconButton.styleFrom(
+      foregroundColor: Colors.black54,
+      iconSize: 28,
+    ),
+  );
 }

@@ -1,3 +1,5 @@
+import 'package:psymetrica/models/user.dart';
+
 class Test {
   const Test({
     required this.id,
@@ -11,7 +13,7 @@ class Test {
 
   final String id;
   final String title;
-  final String author;
+  final User author;
   final String description;
   // category model
   final String slug;

@@ -9,123 +9,111 @@ class OfferDetailsScreen extends StatefulWidget {
   State<OfferDetailsScreen> createState() => _OfferDetailsScreenState();
 }
 
+// на этом экране предлагается добавить личные данные (ФИО, аватар)
 class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(top: 12.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const SizedBox(
-              height: 40,
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  "Заполните свой профиль",
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 2,
-                        fontSize: 18.0,
-                        color: Colors.black87,
-                      ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "Оформите свой профиль. Пожалуйста, добавьте аватар и укажите ваше полное имя.",
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 2,
-                        fontSize: 14.0,
-                        color: Colors.black87,
-                      ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.black12,
-                  width: 1,
-                ),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const EnterDetailsScreen();
-                            },
-                          ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).primaryColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                      ),
-                      child: Text(
-                        "Заполнить",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .copyWith(fontSize: 16, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const TabsScreen();
-                            },
-                          ),
-                        );
-                      },
-                      style: OutlinedButton.styleFrom(
-                        side: BorderSide(
-                            color: Theme.of(context).primaryColor, width: 1),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                      ),
-                      child: Text(
-                        "Позже",
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            fontSize: 16,
-                            color: Theme.of(context).primaryColor),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+      body: Stack(
+        children: [
+          Center(
+            child: _offer(context),
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              _offerButtons(context),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container _offerButtons(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.black12,
+          width: 1,
+        ),
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
         ),
       ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _agreeButton(context),
+          _rejectButton(context),
+        ],
+      ),
+    );
+  }
+
+  SizedBox _rejectButton(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: OutlinedButton(
+        onPressed: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return const TabsScreen();
+              },
+            ),
+          );
+        },
+        style: Theme.of(context).outlinedButtonTheme.style,
+        child: const Text(
+          "Позже",
+        ),
+      ),
+    );
+  }
+
+  SizedBox _agreeButton(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return const EnterDetailsScreen();
+              },
+            ),
+          );
+        },
+        style: Theme.of(context).elevatedButtonTheme.style,
+        child: const Text("Заполнить"),
+      ),
+    );
+  }
+
+  Column _offer(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          "Заполните свой профиль",
+          style: Theme.of(context).textTheme.titleMedium,
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Text(
+          "Оформите свой профиль. Пожалуйста, добавьте аватар и укажите ваше полное имя.",
+          style: Theme.of(context).textTheme.bodyMedium,
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 }

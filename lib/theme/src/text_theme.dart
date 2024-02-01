@@ -12,13 +12,13 @@ class TextThemes {
         ),
     //h1
     titleLarge: GoogleFonts.montserratTextTheme().titleLarge!.copyWith(
-          fontSize: 32,
+          fontSize: 24,
           color: const Color(0xff2c3d49),
           fontWeight: FontWeight.w600,
         ),
     //h2
     titleMedium: GoogleFonts.montserratTextTheme().titleMedium!.copyWith(
-          fontSize: 24,
+          fontSize: 20,
           color: const Color(0xff2c3d49),
           fontWeight: FontWeight.w500,
         ),
