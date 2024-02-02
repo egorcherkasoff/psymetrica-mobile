@@ -15,7 +15,7 @@ class Main extends StatelessWidget {
     return MaterialApp(
       theme: appTheme,
       debugShowCheckedModeBanner: false,
-      home: const TabsScreen(),
+      home: const Welcome(),
     );
   }
 }

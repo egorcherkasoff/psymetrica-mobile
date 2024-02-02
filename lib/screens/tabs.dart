@@ -23,11 +23,11 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     Widget activeTab = const HomeScreen();
-    String title = "Главная";
+    String title = "Лента";
 
     if (_currentIndex == 0) {
       activeTab = const HomeScreen();
-      title = "Главная";
+      title = "Лента";
     } else if (_currentIndex == 1) {
       activeTab = const TestsScreen();
       title = "Тесты";
@@ -56,8 +56,8 @@ class _TabsScreenState extends State<TabsScreen> {
         currentIndex: _currentIndex,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.home),
-            label: "Главная",
+            icon: Icon(CupertinoIcons.news_solid),
+            label: "Лента",
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.book),
