@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/test_finish.dart';
 import 'package:psymetrica/widgets/questions/textarea.dart';
-import 'package:psymetrica/widgets/test_progress.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:psymetrica/widgets/questions/radios.dart';
 import 'package:psymetrica/widgets/questions/scale.dart';
 import 'package:psymetrica/widgets/questions/checks.dart';
@@ -13,7 +13,13 @@ class TestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Главная'),
+        title: Text(
+          'Название теста',
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge!
+              .copyWith(color: Colors.white),
+        ),
         backgroundColor: Theme.of(context).primaryColor,
         automaticallyImplyLeading: false,
       ),
@@ -25,7 +31,7 @@ class TestScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const SizedBox(
-                  height: 70,
+                  height: 43,
                 ),
                 const QuestionScale(),
                 const QuestionRadios(),
@@ -33,86 +39,105 @@ class TestScreen extends StatelessWidget {
                 const QuestionTextArea(),
                 const QuestionTextArea(imgUrl: "cfjgfjg"),
                 // TestImages(),
-                Card(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 7),
-                  elevation: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black12, width: 1),
-                      borderRadius: BorderRadius.circular(10),
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black12,
+                      width: 1,
                     ),
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return const TestFinish();
-                                  },
-                                ),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Theme.of(context).primaryColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                            ),
-                            child: Text(
-                              "Далее",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(fontSize: 16, color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: OutlinedButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 1),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                            ),
-                            child: Text(
-                              "Назад",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                      fontSize: 16,
-                                      color: Theme.of(context).primaryColor),
-                            ),
-                          ),
-                        ),
-                      ],
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      topRight: Radius.circular(8),
                     ),
                   ),
-                )
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _nextButton(context),
+                      _prevButton(context),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
-          const Positioned(
-            left: 0,
-            right: 0,
-            top: 0,
-            child: TestProgress(),
-          ),
+          _testProgress(context),
         ],
+      ),
+    );
+  }
+
+  SizedBox _prevButton(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: OutlinedButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        style: Theme.of(context).outlinedButtonTheme.style,
+        child: const Text(
+          "Назад",
+        ),
+      ),
+    );
+  }
+
+  SizedBox _nextButton(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return const TestFinish();
+              },
+            ),
+          );
+        },
+        style: Theme.of(context).elevatedButtonTheme.style,
+        child: const Text(
+          "Далее",
+        ),
+      ),
+    );
+  }
+
+  Positioned _testProgress(BuildContext context) {
+    return Positioned(
+      left: 0,
+      right: 0,
+      top: 0,
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: const Color(0xffF6F8F9),
+          border: Border.all(
+            color: Colors.black12,
+            width: 1,
+          ),
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(8),
+            bottomRight: Radius.circular(8),
+          ),
+        ),
+        child: LinearPercentIndicator(
+          leading: Text(
+            "Прогресс",
+            style: Theme.of(context).textTheme.labelMedium,
+          ),
+          trailing: Text(
+            "3/10",
+            style: Theme.of(context).textTheme.labelMedium,
+          ),
+          backgroundColor: const Color(0xffd5dce2),
+          lineHeight: 10,
+          barRadius: const Radius.circular(8),
+          progressColor: const Color(0xff1095c1),
+          percent: .3,
+        ),
       ),
     );
   }

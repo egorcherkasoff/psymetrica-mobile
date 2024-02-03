@@ -8,6 +8,8 @@ class InputThemes {
     contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
     focusedBorder: _buildBorder(const Color(0xff1095c1)),
     hintStyle: TextThemes.textTheme.displayMedium,
+    fillColor: Colors.white,
+    filled: true,
   );
 
   static OutlineInputBorder _buildBorder(Color color) {
