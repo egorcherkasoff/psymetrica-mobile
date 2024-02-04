@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/test_finish.dart';
+import 'package:psymetrica/widgets/questions/images.dart';
+import 'package:psymetrica/widgets/questions/intro.dart';
+import 'package:psymetrica/widgets/questions/matrix_multi.dart';
+import 'package:psymetrica/widgets/questions/matrix_single.dart';
 import 'package:psymetrica/widgets/questions/textarea.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:psymetrica/widgets/questions/radios.dart';
@@ -38,7 +42,10 @@ class TestScreen extends StatelessWidget {
                 const QuestionChecks(),
                 const QuestionTextArea(),
                 const QuestionTextArea(imgUrl: "cfjgfjg"),
-                // TestImages(),
+                const QuestionIntro(),
+                const QuestionMatrixSingle(),
+                const QuestionMatrixMulti(),
+                const QuestionImages(),
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
