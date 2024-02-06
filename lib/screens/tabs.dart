@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:psymetrica/screens/home.dart';
+import 'package:psymetrica/screens/feed.dart';
 import 'package:psymetrica/screens/profile.dart';
 import 'package:psymetrica/screens/tests.dart';
 
@@ -22,11 +22,11 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Widget activeTab = const HomeScreen();
+    Widget activeTab = const FeedScreen();
     String title = "Лента";
 
     if (_currentIndex == 0) {
-      activeTab = const HomeScreen();
+      activeTab = const FeedScreen();
       title = "Лента";
     } else if (_currentIndex == 1) {
       activeTab = const TestsScreen();

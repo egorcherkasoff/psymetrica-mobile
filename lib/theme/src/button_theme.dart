@@ -30,4 +30,13 @@ class ButtonThemes {
       iconSize: 28,
     ),
   );
+
+  static final textButtonTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      foregroundColor: const Color(0xff1095c1),
+      padding: EdgeInsets.zero,
+      textStyle: TextThemes.textTheme.displayLarge!.copyWith(fontSize: 14),
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    ),
+  );
 }

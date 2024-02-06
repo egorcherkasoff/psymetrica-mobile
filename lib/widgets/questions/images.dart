@@ -27,7 +27,7 @@ class _QuestionImagesState extends State<QuestionImages> {
           children: [
             _questionText(context),
             GridView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: _images.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

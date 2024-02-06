@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/test.dart';
 import 'package:psymetrica/models/notification.dart' as nfc;
@@ -9,45 +10,44 @@ class NotificationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 7),
-      elevation: 0,
+    return Padding(
+      padding: const EdgeInsets.all(8.0).copyWith(top: 0),
       child: Container(
+        padding: const EdgeInsets.all(8.0),
+        width: double.infinity,
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.black12, width: 1),
-            borderRadius: BorderRadius.circular(10)),
-        child: ListTile(
-          leading: notification.icon,
-          title: Text(
-            notification.title,
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge!
-                .copyWith(fontSize: 18, color: Colors.black),
-          ),
-          subtitle: Text(
-            notification.description,
-            style:
-                Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16),
-          ),
-          trailing: IconButton(
-            padding: EdgeInsets.zero,
-            iconSize: 36,
-            splashColor: Theme.of(context).primaryColor,
-            icon: const Icon(
-              Icons.chevron_right_rounded,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const TestScreen();
-                  },
+          color: const Color(0xffF6F8F9),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: const Color(0xffD5DCE2), width: .5),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Icon(CupertinoIcons.info_circle, color: Colors.black87),
+                const SizedBox(
+                  width: 5,
                 ),
-              );
-            },
-          ),
+                Expanded(
+                  child: Text(
+                    notification.title,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    maxLines: 2,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              notification.description,
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
+          ],
         ),
       ),
     );

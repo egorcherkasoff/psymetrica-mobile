@@ -10,4 +10,5 @@ final appTheme = ThemeData(
   outlinedButtonTheme: ButtonThemes.outlinedButtonTheme,
   inputDecorationTheme: InputThemes.inputTheme,
   iconButtonTheme: ButtonThemes.iconButtonTheme,
+  textButtonTheme: ButtonThemes.textButtonTheme,
 );

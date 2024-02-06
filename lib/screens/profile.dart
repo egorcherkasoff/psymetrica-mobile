@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:psymetrica/models/test.dart';
 import 'package:psymetrica/models/user.dart';
 import 'package:psymetrica/widgets/test_card.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 // экран профиля пользователя (по умолч. текущего юзера)
 class ProfileScreen extends StatelessWidget {
@@ -99,7 +98,7 @@ class ProfileScreen extends StatelessWidget {
           "Надежда Авангард",
           style: Theme.of(context).textTheme.titleMedium,
         ),
-        Text("Психолог"),
+        const Text("Психолог"),
       ],
     );
   }
