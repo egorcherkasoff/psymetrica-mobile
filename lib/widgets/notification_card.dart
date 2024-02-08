@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:psymetrica/screens/test.dart';
 import 'package:psymetrica/models/notification.dart' as nfc;
 
 class NotificationCard extends StatelessWidget {

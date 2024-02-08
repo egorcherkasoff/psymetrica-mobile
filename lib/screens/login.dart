@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/tabs.dart';
+import 'package:psymetrica/services/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -9,12 +10,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthService _authService = AuthService();
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   void _login() {
     if (_formKey.currentState!.validate()) {
+      _authService.login(_emailController.text, _passwordController.text);
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(

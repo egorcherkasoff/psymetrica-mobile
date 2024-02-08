@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/offer_details.dart';
+import 'package:psymetrica/services/auth_service.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -9,6 +12,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  final AuthService _authService = AuthService();
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -16,15 +20,15 @@ class _RegisterState extends State<Register> {
 
   void _register() {
     if (_formKey.currentState!.validate()) {
+      final res = _authService.register(_emailController.text,
+          _passwordController.text, _rePasswordController.text);
+      log(res.toString());
       Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return const OfferDetailsScreen();
-          },
-        ),
-        (route) => false,
-      );
+          context,
+          MaterialPageRoute(
+            builder: (context) => const OfferDetailsScreen(),
+          ),
+          (route) => false);
     }
   }
 

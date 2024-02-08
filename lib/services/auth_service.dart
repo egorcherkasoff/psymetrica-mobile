@@ -1,34 +1,60 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
-import 'package:psymetrica/config.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:psymetrica/models/tokens.dart';
 
 // сервис аутентификации
 class AuthService {
   final Dio _dio = Dio();
-  //регистарция
-  Future<Response> register(
+  final FlutterSecureStorage _storage = const FlutterSecureStorage();
+  final String _baseRoute = "http://192.168.0.101:8080/api/";
+
+  ///запрос к бэкенду для регистрации
+  Future<void> register(
       String email, String password, String rePassword) async {
     try {
-      final Response response = await _dio.post(
-        "${Config.baseRoute}auth/users/",
+      await _dio.post(
+        "${_baseRoute}auth/users/",
         data: {
           "email": email,
           "password": password,
           "re_password": rePassword,
         },
       );
-      return response;
+      login(email, password);
     } catch (e) {
       throw e.toString();
     }
   }
 
-  // login
+  ///запрос к бэкенду для входа, возвращает токены access, refresh
   Future<Response> login(String email, String password) async {
     try {
       final Response response =
-          await _dio.post("${Config.baseRoute}auth/jwt/create/", data: {
+          await _dio.post("${_baseRoute}auth/jwt/create/", data: {
         "email": email,
         "password": password,
+      });
+      log(response.data.toString());
+      AuthToken token = AuthToken.fromJson(response.data);
+      log(token.accessToken);
+      log(token.refreshToken);
+      _storage.write(key: "access_token", value: token.accessToken);
+      _storage.write(key: "refresh_token", value: token.refreshToken);
+      return response;
+    } catch (e) {
+      throw (e.toString());
+    }
+  }
+
+  ///запрос к бэкенду обновления access токена
+  Future<Response> refresh() async {
+    final token = await _storage.read(key: "refresh_token");
+    try {
+      final Response response =
+          await _dio.post("${_baseRoute}auth/jwt/refresh/", data: {
+        "token": token,
       });
       return response;
     } catch (e) {
@@ -36,12 +62,15 @@ class AuthService {
     }
   }
 
-  // обновление acces token
-  Future<Response> refresh(String refreshToken) async {
+  ///запрос к бэкенду верификации access токена, если неудачно, то обновляем токен
+  Future<Response> verify() async {
     try {
-      final Response response = await _dio.post(
-        "${Config.baseRoute}auth/jwt/refresh/",
-      );
+      final token = await _storage.read(key: "access_token");
+      final Response response =
+          await _dio.post("${_baseRoute}auth/jwt/verify/", data: {
+        "token": token,
+      });
+      log(response.data.toString());
       return response;
     } catch (e) {
       throw (e.toString());

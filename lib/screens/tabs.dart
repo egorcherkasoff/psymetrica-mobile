@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/feed.dart';
 import 'package:psymetrica/screens/profile.dart';
 import 'package:psymetrica/screens/tests.dart';
+import 'package:psymetrica/services/auth_service.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
@@ -12,6 +13,13 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
+  @override
+  void initState() {
+    final AuthService authService = AuthService();
+    authService.verify();
+    super.initState();
+  }
+
   int _currentIndex = 0;
 
   void _changeScreen(int index) {

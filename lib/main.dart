@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psymetrica/screens/tabs.dart';
 import 'package:psymetrica/screens/welcome.dart';
 import 'package:psymetrica/theme/theme.dart';
 
@@ -14,7 +15,7 @@ class Main extends StatelessWidget {
     return MaterialApp(
       theme: appTheme,
       debugShowCheckedModeBanner: false,
-      home: const Welcome(),
+      home: const TabsScreen(),
     );
   }
 }
