@@ -1,7 +1,6 @@
 import 'package:psymetrica/models/notification.dart' as nfc;
 import 'package:flutter/material.dart';
 import 'package:psymetrica/models/test.dart';
-import 'package:psymetrica/models/user.dart';
 
 const List<nfc.Notification> tempNotifications = [
   nfc.Notification(
@@ -32,7 +31,7 @@ const List<Test> tempTests = [
     description:
         "Этот тест позволит тебе наконец понять - кто ты из персонажей \"Слова пацана\"",
     questionsCount: 10,
-    author: User(id: "asdada", fullName: "Надежда Авангард"),
+    author: "Надежда Авангард",
     slug: "kto-tu-iz-slova-pacana",
     createdAt: "2024-01-01",
     id: "test_id",
@@ -42,7 +41,7 @@ const List<Test> tempTests = [
       description:
           "Этот тест предназначен для тех, кто считает что у него депресия в 0 лет",
       questionsCount: 38,
-      author: User(id: "asdada", fullName: "Надежда Авангард"),
+      author: "Надежда Авангард",
       slug: "test-dispersia",
       createdAt: "2024-01-01",
       id: "test_id1"),

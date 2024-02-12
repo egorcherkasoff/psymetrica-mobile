@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:psymetrica/widgets/test_card.dart";
 import 'package:psymetrica/temp_data.dart';
 
+/// экран со списком всех тестов, с возможностью фильтрации
 class TestsScreen extends StatefulWidget {
   const TestsScreen({super.key});
 
@@ -28,6 +29,7 @@ class _TestsScreenState extends State<TestsScreen> {
 
   void _showModal(BuildContext context) {
     showModalBottomSheet(
+      isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(8),
@@ -39,68 +41,73 @@ class _TestsScreenState extends State<TestsScreen> {
           width: double.infinity,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      TextFormField(
-                        controller: _titleFilterController,
-                        validator: (value) {
-                          return null;
-                        },
-                        keyboardType: TextInputType.text,
-                        decoration: const InputDecoration(
-                          hintText: "Название теста",
+            child: Padding(
+              padding: MediaQuery.of(context).viewInsets,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 15,
                         ),
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      TextFormField(
-                        controller: _descriptionController,
-                        validator: (value) {
-                          return null;
-                        },
-                        keyboardType: TextInputType.text,
-                        decoration: const InputDecoration(
-                          hintText: "Описание теста",
+                        TextFormField(
+                          controller: _titleFilterController,
+                          validator: (value) {
+                            return null;
+                          },
+                          keyboardType: TextInputType.text,
+                          decoration: const InputDecoration(
+                            hintText: "Название теста",
+                          ),
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              fontSize: 16,
-                            ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      TextFormField(
-                        controller: _authorController,
-                        validator: (value) {
-                          return null;
-                        },
-                        keyboardType: TextInputType.text,
-                        decoration: const InputDecoration(
-                          hintText: "Автор теста",
+                        const SizedBox(
+                          height: 15,
                         ),
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              fontSize: 16,
-                            ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      _applyFilterButton(context),
-                      _resetFilterButton(context),
-                    ],
+                        TextFormField(
+                          controller: _descriptionController,
+                          validator: (value) {
+                            return null;
+                          },
+                          keyboardType: TextInputType.text,
+                          decoration: const InputDecoration(
+                            hintText: "Описание теста",
+                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    fontSize: 16,
+                                  ),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        TextFormField(
+                          controller: _authorController,
+                          validator: (value) {
+                            return null;
+                          },
+                          keyboardType: TextInputType.text,
+                          decoration: const InputDecoration(
+                            hintText: "Автор теста",
+                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    fontSize: 16,
+                                  ),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        _applyFilterButton(context),
+                        _resetFilterButton(context),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

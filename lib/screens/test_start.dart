@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:psymetrica/models/test.dart';
 import 'package:psymetrica/screens/test.dart';
 
-//экран начала теста
+/// экран отображается перед началом прохождения теста
 class TestStart extends StatelessWidget {
   const TestStart({Key? key, required this.test}) : super(key: key);
 
@@ -27,7 +27,7 @@ class TestStart extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Text("Автор теста: ${test.author.fullName}",
+              Text("Автор теста: ${test.author}",
                   textAlign: TextAlign.start,
                   style: Theme.of(context).textTheme.bodyMedium),
               const SizedBox(

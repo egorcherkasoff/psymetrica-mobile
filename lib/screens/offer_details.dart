@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/enter_details.dart';
 import 'package:psymetrica/screens/tabs.dart';
 
+///экран с предложением заполнить данные о себе
 class OfferDetailsScreen extends StatefulWidget {
   const OfferDetailsScreen({super.key});
 

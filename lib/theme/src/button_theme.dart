@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:psymetrica/theme/src/text_theme.dart';
 
+/// темы кнопок
 class ButtonThemes {
-  // темы кнопок
   static final elevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white,

@@ -1,4 +1,3 @@
-import 'package:psymetrica/models/user.dart';
 
 class Test {
   const Test({
@@ -13,10 +12,21 @@ class Test {
 
   final String id;
   final String title;
-  final User author;
+  final String author;
   final String description;
-  // category model
   final String slug;
   final int questionsCount;
   final String createdAt;
+
+  factory Test.fromJson(Map<String, dynamic> json) {
+    return Test(
+      id: json['id'],
+      title: json['title'],
+      author: json['author'],
+      description: json['description'],
+      slug: json['slug'],
+      questionsCount: json['questions_count'],
+      createdAt: json['created_at'],
+    );
+  }
 }

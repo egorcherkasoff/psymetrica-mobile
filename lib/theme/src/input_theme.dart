@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:psymetrica/theme/src/text_theme.dart';
 
-//тема для инпутов
+/// темы инпутов
 class InputThemes {
   static final inputTheme = InputDecorationTheme(
     border: _buildBorder(const Color(0xffa2afb9)),

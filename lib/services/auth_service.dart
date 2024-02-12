@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:psymetrica/models/tokens.dart';
 
-// сервис аутентификации
+/// сервис взаимодействующий с аутентификацией
 class AuthService {
   final Dio _dio = Dio();
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
@@ -63,17 +63,15 @@ class AuthService {
   }
 
   ///запрос к бэкенду верификации access токена, если неудачно, то обновляем токен
-  Future<Response> verify() async {
+  Future<bool> verify() async {
     try {
       final token = await _storage.read(key: "access_token");
-      final Response response =
-          await _dio.post("${_baseRoute}auth/jwt/verify/", data: {
+      await _dio.post("${_baseRoute}auth/jwt/verify/", data: {
         "token": token,
       });
-      log(response.data.toString());
-      return response;
+      return true;
     } catch (e) {
-      throw (e.toString());
+      return false;
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// экран, отображающийся после завершения прохождения теста
 class TestFinish extends StatelessWidget {
   const TestFinish({Key? key}) : super(key: key);
 

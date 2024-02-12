@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/feed.dart';
 import 'package:psymetrica/screens/profile.dart';
+import 'package:psymetrica/screens/profile_settings.dart';
 import 'package:psymetrica/screens/tests.dart';
 import 'package:psymetrica/services/auth_service.dart';
 
+/// скаффолд для вкладок (экранов), который позволяет переключаться между ними
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
 
@@ -54,6 +56,23 @@ class _TabsScreenState extends State<TabsScreen> {
               .titleLarge!
               .copyWith(color: Colors.white),
         ),
+        actions: [
+          _currentIndex == 2
+              ? IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ProfileSettings(),
+                      ),
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.settings,
+                    color: Colors.white,
+                  ),
+                )
+              : const SizedBox(),
+        ],
         backgroundColor: Theme.of(context).primaryColor,
         automaticallyImplyLeading: false,
       ),

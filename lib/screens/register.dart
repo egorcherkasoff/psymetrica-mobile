@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/offer_details.dart';
 import 'package:psymetrica/services/auth_service.dart';
 
+/// экран регистрации
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
 

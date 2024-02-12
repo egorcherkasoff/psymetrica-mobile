@@ -76,7 +76,7 @@ class TestCard extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           Text(
-            "Автор: ${test.author.fullName}",
+            "Автор: ${test.author}",
             style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(

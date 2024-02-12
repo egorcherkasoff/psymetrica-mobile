@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/tabs.dart';
 import 'package:psymetrica/services/auth_service.dart';
 
+/// экран аутентификации
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 

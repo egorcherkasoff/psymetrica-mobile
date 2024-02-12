@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:psymetrica/screens/login.dart';
 import 'package:psymetrica/screens/register.dart';
 
-// экран с логотипом и кнопками входа / регистрации
+/// экран с логотипом и кнопками входа / регистрации (стартовый экран)
 class Welcome extends StatelessWidget {
   const Welcome({Key? key}) : super(key: key);
 

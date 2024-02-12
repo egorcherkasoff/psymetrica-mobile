@@ -10,6 +10,7 @@ import 'package:psymetrica/widgets/questions/radios.dart';
 import 'package:psymetrica/widgets/questions/scale.dart';
 import 'package:psymetrica/widgets/questions/checks.dart';
 
+/// экран теста, на котором отображаются вопросы
 class TestScreen extends StatelessWidget {
   const TestScreen({super.key});
 

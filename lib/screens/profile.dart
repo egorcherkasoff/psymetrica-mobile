@@ -1,9 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:psymetrica/models/test.dart';
-import 'package:psymetrica/models/user.dart';
 import 'package:psymetrica/widgets/test_card.dart';
 
-// экран профиля пользователя (по умолч. текущего юзера)
+/// экран профиля пользователя (по умолч. текущего юзера)
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -14,7 +15,14 @@ class ProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [_userInfo(context), _userTests(context)],
+          children: [
+            _userInfo(context),
+            const Divider(
+              height: 16,
+              thickness: 0.4,
+            ),
+            _userTests(context),
+          ],
         ),
       ),
     );
@@ -34,7 +42,7 @@ class ProfileScreen extends StatelessWidget {
               description:
                   "Этот тест предназначен для тех, кто считает что у него депресия в 0 лет",
               questionsCount: 38,
-              author: User(id: "asdada", fullName: "Надежда Авангард"),
+              author: "Надежда Авангард",
               slug: "test-dispersia",
               createdAt: "2024-01-01",
               id: "test_id1"),
@@ -48,7 +56,7 @@ class ProfileScreen extends StatelessWidget {
               description:
                   "Этот тест предназначен для тех, кто считает что у него депресия в 0 лет",
               questionsCount: 38,
-              author: User(id: "asdada", fullName: "Надежда Авангард"),
+              author: "Надежда Авангард",
               slug: "test-dispersia",
               createdAt: "2024-01-01",
               id: "test_id1"),
@@ -62,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
               description:
                   "Этот тест предназначен для тех, кто считает что у него депресия в 0 лет",
               questionsCount: 38,
-              author: User(id: "asdada", fullName: "Надежда Авангард"),
+              author: "Надежда Авангард",
               slug: "test-dispersia",
               createdAt: "2024-01-01",
               id: "test_id1"),
@@ -86,11 +94,22 @@ class ProfileScreen extends StatelessWidget {
                 Radius.circular(8),
               ),
             ),
-            child: Image.network(
-              "https://img.goodfon.ru/original/1280x1024/a/4b/3d-geometric-cube.jpg",
-              fit: BoxFit.cover,
+            child: CachedNetworkImage(
               width: 200,
               height: 200,
+              imageUrl:
+                  "https://img.goodfon.ru/original/1280x1024/a/4b/3d-geometric-cube.jpg",
+              fit: BoxFit.cover,
+              placeholder: (context, url) => Padding(
+                padding: EdgeInsets.all(MediaQuery.of(context).size.width / 3),
+                child: CircularProgressIndicator(
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+              errorWidget: (context, url, error) => const Icon(
+                CupertinoIcons.exclamationmark_circle,
+                color: Colors.red,
+              ),
             ),
           ),
         ),

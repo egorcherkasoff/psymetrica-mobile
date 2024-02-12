@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:psymetrica/widgets/notification_card.dart';
 import 'package:psymetrica/temp_data.dart';
 
+///экран ленты, на которой отображаюстся уведомления и тесты, ожидающие продолжения прохождения
 class FeedScreen extends StatelessWidget {
   const FeedScreen({Key? key}) : super(key: key);
 
@@ -70,6 +71,7 @@ class FeedScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     text,
